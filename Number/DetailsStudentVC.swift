@@ -10,6 +10,9 @@ import UIKit
 
 class DetailsStudentVC: UIViewController {
 //MARK: - Properties
+    /// Variables
+    var shared = DataServices.shared
+    
     /// IBOutlets
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtClass: UITextField!
@@ -17,9 +20,13 @@ class DetailsStudentVC: UIViewController {
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var lblCount: UILabel!
     
+    /// IBActions
     @IBAction func aGestureTapImage(_ sender: Any) {
-        
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +40,55 @@ class DetailsStudentVC: UIViewController {
 
 }
 
+// MARK: - Configuarge the UIImagePickerControllerDelegate.
 extension DetailsStudentVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let imageSelected = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Error to select image from library")
+        }
+        myImage.image = imageSelected
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Private Function
+extension DetailsStudentVC {
+    private func appendStudent() {
+        guard let sName = txtName.text else {
+            return
+        }
+        guard let sClass = txtClass.text else {
+            return
+        }
+        guard let sPhone = txtPhone.text else {
+            return
+        }
+        guard let image = myImage.image else {
+            return
+        }
+        
+        let newStudent = Student(sName: sName, sPhone: sPhone, sClass: sClass, sImage: image)
+        shared.appendStudent(student: newStudent!)
+    }
     
+    private func editStudent(at index: Int) {
+        guard let sName = txtName.text else {
+            return
+        }
+        guard let sClass = txtClass.text else {
+            return
+        }
+        guard let sPhone = txtPhone.text else {
+            return
+        }
+        guard let image = myImage.image else {
+            return
+        }
+        
+        let newStudent = Student(sName: sName, sPhone: sPhone, sClass: sClass, sImage: image)
+        shared.editStudent(student: newStudent!, at: index)
+    }
 }

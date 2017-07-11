@@ -33,13 +33,13 @@ class DataServices {
     }
     
     /// Function
-    func appendStudent(student: [Student]) {
-        
+    func appendStudent(student: Student) {
+        _student.append(student)
     }
-    func editStudent(student: [Student], at: Int) {
-        
+    func editStudent(student: Student, at index: Int) {
+        _student[index] = student
     }
-    func removeStudent(at: Int) {
-        
+    func removeStudent(at index: Int) {
+        _student.remove(at: index)
     }
 }
