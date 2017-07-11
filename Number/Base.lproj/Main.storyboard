@@ -96,12 +96,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Không có dữ liệu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXX-05-E5l">
+                                <rect key="frame" x="166" y="323" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YZd-oE-EsZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5A2-ur-5lQ"/>
+                            <constraint firstItem="IXX-05-E5l" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9Z1-dK-nW7"/>
                             <constraint firstAttribute="trailing" secondItem="YZd-oE-EsZ" secondAttribute="trailing" id="DgW-m2-sC4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="YZd-oE-EsZ" secondAttribute="bottom" id="JQN-tQ-UoN"/>
+                            <constraint firstItem="IXX-05-E5l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PSs-av-UgG"/>
                             <constraint firstItem="YZd-oE-EsZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Rv2-nL-XDg"/>
                             <constraint firstItem="qqj-HT-oHo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o6O-Cg-6gn"/>
                             <constraint firstAttribute="trailing" secondItem="qqj-HT-oHo" secondAttribute="trailing" id="rB9-nN-Fdd"/>
@@ -118,6 +126,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblNotification" destination="IXX-05-E5l" id="6WI-fc-iJ1"/>
                         <outlet property="tblStudents" destination="qqj-HT-oHo" id="QMW-wJ-GwB"/>
                     </connections>
                 </viewController>

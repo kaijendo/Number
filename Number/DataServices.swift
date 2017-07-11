@@ -12,7 +12,7 @@ class DataServices {
     
     /// Variables
     static let shared = DataServices()
-    var _student: [Student]!
+    private var _student: [Student]!
     var student: [Student] {
         get {
             if _student == nil {
