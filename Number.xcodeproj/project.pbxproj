@@ -18,6 +18,7 @@
 		4449F4D21F14458500884A20 /* ListStudentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4449F4D11F14458500884A20 /* ListStudentsCell.swift */; };
 		4449F4DB1F1446F000884A20 /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4449F4DA1F1446F000884A20 /* DataServices.swift */; };
 		4449F4DD1F14473700884A20 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4449F4DC1F14473700884A20 /* Student.swift */; };
+		44E50CCB1F159CF100B13174 /* DetailsStudentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E50CCA1F159CF100B13174 /* DetailsStudentDelegate.swift */; };
 		44FE8F6D1F15135900D06FC3 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE8F6C1F15135900D06FC3 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		4449F4D11F14458500884A20 /* ListStudentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListStudentsCell.swift; sourceTree = "<group>"; };
 		4449F4DA1F1446F000884A20 /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 		4449F4DC1F14473700884A20 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		44E50CCA1F159CF100B13174 /* DetailsStudentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsStudentDelegate.swift; sourceTree = "<group>"; };
 		44FE8F6C1F15135900D06FC3 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				4449F4CD1F14430000884A20 /* DetailsStudentVC.swift */,
+				44E50CCA1F159CF100B13174 /* DetailsStudentDelegate.swift */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				4449F4DD1F14473700884A20 /* Student.swift in Sources */,
 				4449F4D01F14431300884A20 /* ListStudentsVC.swift in Sources */,
 				4449F4D21F14458500884A20 /* ListStudentsCell.swift in Sources */,
+				44E50CCB1F159CF100B13174 /* DetailsStudentDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

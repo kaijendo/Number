@@ -12,7 +12,8 @@ class DetailsStudentVC: UIViewController {
 //MARK: - Properties
     /// Variables
     var shared = DataServices.shared
-    
+    var selected: Int?
+    weak var delegation: DetailsStudentDelegate?
     /// IBOutlets
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtClass: UITextField!
@@ -27,6 +28,14 @@ class DetailsStudentVC: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func abtnSave(_ sender: UIBarButtonItem) {
+        if selected == nil {
+            appendStudent()
+        } else {
+            editStudent(at: selected ?? 0)
+        }
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,17 +55,19 @@ extension DetailsStudentVC: UIImagePickerControllerDelegate, UINavigationControl
         dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let imagePickerController = UIImagePickerController()
         guard let imageSelected = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Error to select image from library")
         }
         myImage.image = imageSelected
         dismiss(animated: true, completion: nil)
+        imagePickerController.delegate = self
     }
 }
 
 // MARK: - Private Function
 extension DetailsStudentVC {
-    private func appendStudent() {
+    func appendStudent() {
         guard let sName = txtName.text else {
             return
         }
@@ -72,9 +83,10 @@ extension DetailsStudentVC {
         
         let newStudent = Student(sName: sName, sPhone: sPhone, sClass: sClass, sImage: image)
         shared.appendStudent(student: newStudent!)
+        
     }
     
-    private func editStudent(at index: Int) {
+    func editStudent(at index: Int) {
         guard let sName = txtName.text else {
             return
         }

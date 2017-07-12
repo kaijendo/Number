@@ -17,7 +17,7 @@ class DataServices {
         get {
             if _student == nil {
                 updateStudent()
-                return _student
+                return _student ?? []
             }
             return _student
         }
@@ -33,8 +33,12 @@ class DataServices {
     }
     
     /// Function
-    func appendStudent(student: Student) {
-        _student.append(student)
+    func appendStudent(student: Student?) {
+        guard student != nil else { return }
+        if _student == nil {
+            _student = []
+        }
+        _student.append(student!)
     }
     func editStudent(student: Student, at index: Int) {
         _student[index] = student

@@ -16,13 +16,13 @@ class Student {
     var sImage: UIImage?
     
     init?(sName: String, sPhone: String, sClass: String, sImage: UIImage?) {
-        guard sName == "" else {
+        guard sName != "" else {
             return nil
         }
-        guard sPhone == "" else {
+        guard sPhone != "" else {
             return nil
         }
-        guard sClass == "" else {
+        guard sClass != "" else {
             return nil
         }
 

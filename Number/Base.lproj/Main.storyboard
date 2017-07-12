@@ -91,13 +91,13 @@
                                             <outlet property="sImage" destination="u9I-UT-Vie" id="qQ6-NW-a6a"/>
                                             <outlet property="sName" destination="ehA-K7-uLG" id="VXA-G9-Nqm"/>
                                             <outlet property="sPhone" destination="2ya-Z7-x8a" id="g8L-rb-2j3"/>
-                                            <segue destination="g97-tb-OqA" kind="show" id="kOe-PP-nJT"/>
+                                            <segue destination="g97-tb-OqA" kind="show" identifier="Edit" id="kOe-PP-nJT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Không có dữ liệu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXX-05-E5l">
-                                <rect key="frame" x="166" y="323" width="129" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không có dữ liệu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXX-05-E5l">
+                                <rect key="frame" x="123" y="323" width="129" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -118,15 +118,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="z0p-KX-zRR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="wRR-1W-k00"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ja6-IP-fUZ">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="hGV-r5-J1C">
+                                <rect key="frame" x="16" y="6" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <connections>
+                                <action selector="aSwitch:" destination="BYZ-38-t0r" id="nFT-vM-Xgb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e6w-0b-wqs">
                             <connections>
-                                <segue destination="ltC-Mo-rm5" kind="show" id="yif-lD-slH"/>
+                                <segue destination="ltC-Mo-rm5" kind="show" identifier="Add" id="yif-lD-slH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lblNotification" destination="IXX-05-E5l" id="6WI-fc-iJ1"/>
+                        <outlet property="mySwitch" destination="ja6-IP-fUZ" id="CGB-VE-PQ0"/>
                         <outlet property="tblStudents" destination="qqj-HT-oHo" id="QMW-wJ-GwB"/>
                     </connections>
                 </viewController>
@@ -170,7 +179,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DGZ-PE-7cV">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-default" translatesAutoresizingMaskIntoConstraints="NO" id="DGZ-PE-7cV">
                                 <rect key="frame" x="62.5" y="270" width="250" height="250"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -179,7 +188,7 @@
                                     <constraint firstAttribute="width" constant="250" id="pKi-Hd-JMM"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="n2o-xE-WH9" appends="YES" id="Ipo-xm-Ex6"/>
+                                    <outletCollection property="gestureRecognizers" destination="j3x-22-WgS" appends="YES" id="Zo2-lF-iB8"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -202,7 +211,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3CF-E8-j6y">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cOr-d9-Ldu"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cOr-d9-Ldu">
+                            <connections>
+                                <action selector="abtnSave:" destination="ltC-Mo-rm5" id="abM-Kv-Coq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lblCount" destination="hy7-fP-nsq" id="AA0-gl-T2y"/>
@@ -213,11 +226,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IzQ-pp-fmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <gestureRecognizer id="n2o-xE-WH9">
+                <tapGestureRecognizer id="j3x-22-WgS">
                     <connections>
-                        <action selector="aGestureTapImage:" destination="ltC-Mo-rm5" id="GZf-A1-lBW"/>
+                        <action selector="aGestureTapImage:" destination="ltC-Mo-rm5" id="qdD-LH-WOX"/>
                     </connections>
-                </gestureRecognizer>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2288.8000000000002" y="787.55622188905556"/>
         </scene>
@@ -258,6 +271,9 @@
             <point key="canvasLocation" x="1530" y="1121"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img-default" width="150" height="112"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yif-lD-slH"/>
     </inferredMetricsTieBreakers>
