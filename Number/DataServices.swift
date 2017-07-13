@@ -12,38 +12,54 @@ class DataServices {
     
     /// Variables
     static let shared = DataServices()
-    private var _student: [Student]!
-    var student: [Student] {
+    private var _students: [Student]!
+    private var _numbers: [Int]!
+    var numbers: [Int] {
         get {
-            if _student == nil {
-                updateStudent()
-                return _student ?? []
+            if _numbers == nil {
+                updateNumber()
+                return _numbers ?? []
             }
-            return _student
+            return _numbers
         }
         set {
-            _student = newValue
+            _numbers = newValue
+        }
+    }
+    var students: [Student] {
+        get {
+            if _students == nil {
+                updateStudent()
+                return _students ?? []
+            }
+            return _students
+        }
+        set {
+            _students = newValue
         }
     }
     
     
     /// Private Function
     private func updateStudent() {
-        
+        print("O day se update student neu no chua co")
+    }
+    private func updateNumber() {
+        print("O day se update number neu no chua co")
     }
     
-    /// Function
+    /// Function For Student
     func appendStudent(student: Student?) {
         guard student != nil else { return }
-        if _student == nil {
-            _student = []
+        if _students == nil {
+            _students = []
         }
-        _student.append(student!)
+        _students.append(student!)
     }
     func editStudent(student: Student, at index: Int) {
-        _student[index] = student
+        _students[index] = student
     }
     func removeStudent(at index: Int) {
-        _student.remove(at: index)
+        _students.remove(at: index)
     }
 }

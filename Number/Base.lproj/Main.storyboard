@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="lMl-h5-p3G" customClass="ListStudentsCell" customModule="Number" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListStudentsCell" rowHeight="95" id="lMl-h5-p3G" customClass="ListStudentsCell" customModule="Number" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lMl-h5-p3G" id="5hd-Cn-Tno">
@@ -63,9 +63,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1K-I4-pmd">
                                                     <rect key="frame" x="344" y="7" width="26" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="26" id="rMo-vk-xod"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -94,6 +91,29 @@
                                             <segue destination="g97-tb-OqA" kind="show" identifier="Edit" id="kOe-PP-nJT"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListNumbersCell" rowHeight="113" id="XW8-2R-Ti6" customClass="ListNumbersCell" customModule="Number" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="123" width="375" height="113"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XW8-2R-Ti6" id="5U7-zL-M95">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pD-KA-T8g">
+                                                    <rect key="frame" x="166.5" y="46" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9pD-KA-T8g" firstAttribute="centerY" secondItem="5U7-zL-M95" secondAttribute="centerY" id="iWQ-ji-zt0"/>
+                                                <constraint firstItem="9pD-KA-T8g" firstAttribute="centerX" secondItem="5U7-zL-M95" secondAttribute="centerX" id="iWp-4n-2Mh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblNumber" destination="9pD-KA-T8g" id="1x1-IY-HbR"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Không có dữ liệu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXX-05-E5l">
@@ -118,14 +138,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="z0p-KX-zRR">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ja6-IP-fUZ">
+                        <barButtonItem key="leftBarButtonItem" id="ja6-IP-fUZ">
                             <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="hGV-r5-J1C">
                                 <rect key="frame" x="16" y="6" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <connections>
-                                <action selector="aSwitch:" destination="BYZ-38-t0r" id="nFT-vM-Xgb"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e6w-0b-wqs">
                             <connections>
@@ -135,7 +152,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="lblNotification" destination="IXX-05-E5l" id="6WI-fc-iJ1"/>
-                        <outlet property="mySwitch" destination="ja6-IP-fUZ" id="CGB-VE-PQ0"/>
+                        <outlet property="mySwitch" destination="hGV-r5-J1C" id="Bxt-9C-LZh"/>
                         <outlet property="tblStudents" destination="qqj-HT-oHo" id="QMW-wJ-GwB"/>
                     </connections>
                 </viewController>
@@ -179,7 +196,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-default" translatesAutoresizingMaskIntoConstraints="NO" id="DGZ-PE-7cV">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_Default" translatesAutoresizingMaskIntoConstraints="NO" id="DGZ-PE-7cV">
                                 <rect key="frame" x="62.5" y="270" width="250" height="250"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -202,6 +219,7 @@
                             <constraint firstItem="Cnq-sb-x6q" firstAttribute="top" secondItem="N5I-25-YM9" secondAttribute="bottom" constant="20" id="QOY-aY-5kX"/>
                             <constraint firstItem="Cnq-sb-x6q" firstAttribute="leading" secondItem="N5I-25-YM9" secondAttribute="leading" id="TLE-gS-GT4"/>
                             <constraint firstItem="DGZ-PE-7cV" firstAttribute="top" secondItem="leb-Sw-0pI" secondAttribute="bottom" constant="25" id="VMS-zQ-vgH"/>
+                            <constraint firstAttribute="trailing" secondItem="hy7-fP-nsq" secondAttribute="trailing" constant="5" id="XWR-ai-16h"/>
                             <constraint firstItem="hy7-fP-nsq" firstAttribute="top" secondItem="Zm7-0a-F4L" secondAttribute="bottom" constant="5" id="dlm-Ps-3Tr"/>
                             <constraint firstAttribute="trailing" secondItem="hy7-fP-nsq" secondAttribute="trailing" constant="5" id="eTb-lS-Jjn"/>
                             <constraint firstItem="leb-Sw-0pI" firstAttribute="centerX" secondItem="Cnq-sb-x6q" secondAttribute="centerX" id="oL4-tN-kTv"/>
@@ -272,7 +290,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img-default" width="150" height="112"/>
+        <image name="IMG_Default" width="150" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yif-lD-slH"/>
