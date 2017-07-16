@@ -22,6 +22,7 @@
 		449255F21F16775F002C6F83 /* NumberDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449255F11F16775F002C6F83 /* NumberDataSource.swift */; };
 		449255F41F167770002C6F83 /* NumberDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449255F31F167770002C6F83 /* NumberDelegate.swift */; };
 		449255F81F17BC96002C6F83 /* ListNumbersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449255F71F17BC96002C6F83 /* ListNumbersCell.swift */; };
+		44E4F6ED1F183ED7009F97D2 /* DetailNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E4F6EC1F183ED7009F97D2 /* DetailNumberVC.swift */; };
 		44E50CCB1F159CF100B13174 /* DetailsStudentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E50CCA1F159CF100B13174 /* DetailsStudentDelegate.swift */; };
 		44FE8F6D1F15135900D06FC3 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE8F6C1F15135900D06FC3 /* DataSource.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		449255F11F16775F002C6F83 /* NumberDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberDataSource.swift; sourceTree = "<group>"; };
 		449255F31F167770002C6F83 /* NumberDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberDelegate.swift; sourceTree = "<group>"; };
 		449255F71F17BC96002C6F83 /* ListNumbersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListNumbersCell.swift; sourceTree = "<group>"; };
+		44E4F6EC1F183ED7009F97D2 /* DetailNumberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNumberVC.swift; sourceTree = "<group>"; };
 		44E50CCA1F159CF100B13174 /* DetailsStudentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsStudentDelegate.swift; sourceTree = "<group>"; };
 		44FE8F6C1F15135900D06FC3 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,8 +204,8 @@
 		4449F4D91F1446BC00884A20 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				4449F4CD1F14430000884A20 /* DetailsStudentVC.swift */,
-				44E50CCA1F159CF100B13174 /* DetailsStudentDelegate.swift */,
+				44E4F6EB1F183EA1009F97D2 /* DetailsNumber */,
+				44E4F6EA1F183E94009F97D2 /* DetailsStudent */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -226,6 +228,23 @@
 				449255F71F17BC96002C6F83 /* ListNumbersCell.swift */,
 			);
 			name = NumberData;
+			sourceTree = "<group>";
+		};
+		44E4F6EA1F183E94009F97D2 /* DetailsStudent */ = {
+			isa = PBXGroup;
+			children = (
+				4449F4CD1F14430000884A20 /* DetailsStudentVC.swift */,
+				44E50CCA1F159CF100B13174 /* DetailsStudentDelegate.swift */,
+			);
+			name = DetailsStudent;
+			sourceTree = "<group>";
+		};
+		44E4F6EB1F183EA1009F97D2 /* DetailsNumber */ = {
+			isa = PBXGroup;
+			children = (
+				44E4F6EC1F183ED7009F97D2 /* DetailNumberVC.swift */,
+			);
+			name = DetailsNumber;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +386,7 @@
 			files = (
 				449255F81F17BC96002C6F83 /* ListNumbersCell.swift in Sources */,
 				44FE8F6D1F15135900D06FC3 /* DataSource.swift in Sources */,
+				44E4F6ED1F183ED7009F97D2 /* DetailNumberVC.swift in Sources */,
 				4449F4DB1F1446F000884A20 /* DataServices.swift in Sources */,
 				4449F49E1F143DF800884A20 /* AppDelegate.swift in Sources */,
 				449255EE1F166C3A002C6F83 /* Delegate.swift in Sources */,

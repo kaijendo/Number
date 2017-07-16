@@ -24,10 +24,10 @@ class ListStudentsVC: UIViewController {
     @IBOutlet weak var tblStudents: UITableView!
     @IBOutlet weak var lblNotification: UILabel! {
         didSet {
-        lblNotification.isHidden = true
+            lblNotification.isHidden = true
         }
     }
-
+    
     @IBOutlet weak var mySwitch: UISwitch!
     
     override func viewDidLoad() {
@@ -36,6 +36,13 @@ class ListStudentsVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func add(_ sender: Any) {
+        if mySwitch.isOn {
+            performSegue(withIdentifier: "Add", sender: nil)
+        } else {
+            performSegue(withIdentifier: "AddNumber", sender: nil)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,15 +53,28 @@ class ListStudentsVC: UIViewController {
 /// Prepare to selete to details VC
 extension ListStudentsVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier ?? "" {
-        case "Edit":
-            guard let detailsStudentVC = segue.destination as? DetailsStudentVC else {
-                fatalError("Error to create: \(segue.destination)")
+        if mySwitch.isOn {
+            switch segue.identifier ?? "" {
+            case "Edit":
+                guard let detailsStudentVC = segue.destination as? DetailsStudentVC else {
+                    fatalError("Error to create: \(segue.destination)")
+                }
+                detailsStudentVC.selected = tblStudents.indexPathForSelectedRow?.row
+                break
+            default:
+                break
             }
-            
-            detailsStudentVC.selected = tblStudents.indexPathForSelectedRow?.row
-        default:
-            return
+        } else {
+            switch segue.identifier ?? "" {
+            case "EditNumber":
+                guard let detailsNumberVC = segue.destination as? DetailNumbersVC else {
+                    fatalError("Error to create: \(segue.destination)")
+                }
+                detailsNumberVC.selected = tblStudents.indexPathForSelectedRow?.row
+                break
+            default:
+                break
+            }
         }
     }
     
@@ -75,6 +95,8 @@ extension ListStudentsVC {
         }
         tblStudents.reloadData()
     }
+    
+    
 }
 
 /// Call-back data to ListStudentsVC

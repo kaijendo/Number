@@ -9,7 +9,7 @@
 import Foundation
 
 class DataServices {
-    
+    //MARK: - Properties
     /// Variables
     static let shared = DataServices()
     private var _students: [Student]!
@@ -40,7 +40,7 @@ class DataServices {
     }
     
     
-    /// Private Function
+    //MARK: - Private Function
     private func updateStudent() {
         print("O day se update student neu no chua co")
     }
@@ -48,8 +48,8 @@ class DataServices {
         print("O day se update number neu no chua co")
     }
     
-    /// Function For Student
-    func appendStudent(student: Student?) {
+    //MARK: - Function for Student
+    func appendStudent(student: Student?)  {
         guard student != nil else { return }
         if _students == nil {
             _students = []
@@ -61,5 +61,20 @@ class DataServices {
     }
     func removeStudent(at index: Int) {
         _students.remove(at: index)
+    }
+    
+    //MARK: - Function for Number
+    func appendNumber(number: Int?)  {
+        guard number != nil else { return }
+        if _numbers == nil {
+            _numbers = []
+        }
+        _numbers.append(number!)
+    }
+    func editNumber(number: Int, at index: Int) {
+        _numbers[index] = number
+    }
+    func removeNumber(at index: Int) {
+        _numbers.remove(at: index)
     }
 }

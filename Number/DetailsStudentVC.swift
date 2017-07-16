@@ -11,7 +11,7 @@ import UIKit
 class DetailsStudentVC: UIViewController {
 //MARK: - Properties
     /// Variables
-    var shared = DataServices.shared
+    var dataServices = DataServices.shared
     var selected: Int?
     weak var delegation: DetailsStudentDelegate?
     /// IBOutlets
@@ -38,6 +38,7 @@ class DetailsStudentVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        showUI(at: selected)
 
         // Do any additional setup after loading the view.
     }
@@ -67,7 +68,7 @@ extension DetailsStudentVC: UIImagePickerControllerDelegate, UINavigationControl
 
 // MARK: - Private Function
 extension DetailsStudentVC {
-    func appendStudent() {
+    fileprivate func appendStudent() {
         guard let sName = txtName.text else {
             return
         }
@@ -81,12 +82,15 @@ extension DetailsStudentVC {
             return
         }
         
-        let newStudent = Student(sName: sName, sPhone: sPhone, sClass: sClass, sImage: image)
-        shared.appendStudent(student: newStudent!)
+        guard let newStudent = Student(sName: sName, sPhone: sPhone, sClass: sClass, sImage: image) else {
+            print("khong tao duoc")
+            return
+        }
+        dataServices.appendStudent(student: newStudent)
         
     }
     
-    func editStudent(at index: Int) {
+    fileprivate func editStudent(at index: Int) {
         guard let sName = txtName.text else {
             return
         }
@@ -101,6 +105,14 @@ extension DetailsStudentVC {
         }
         
         let newStudent = Student(sName: sName, sPhone: sPhone, sClass: sClass, sImage: image)
-        shared.editStudent(student: newStudent!, at: index)
+        dataServices.editStudent(student: newStudent!, at: index)
+    }
+    fileprivate func showUI(at index: Int?) {
+        if index != nil {
+            txtName.text = dataServices.students[index ?? 0].sName
+            txtClass.text = dataServices.students[index ?? 0].sClass
+            txtPhone.text = dataServices.students[index ?? 0].sPhone
+            myImage.image = dataServices.students[index ?? 0].sImage
+        }
     }
 }
