@@ -14,26 +14,50 @@ class ListStudentsVC: UIViewController {
     var _notification: String?
     var students: [Student]?
     var dataServices: DataServices?
-    var isShowStudent: Bool = false
+    var isShowStudent: Bool = false {
+        didSet {
+            if mySwitch.isOn {
+                navigationItem.title = "StudentManagement"
+            } else {
+                navigationItem.title
+                    = "NumberManagement"
+            }
+        }
+    }
+    var hasData: Bool = false {
+        didSet {
+            guard hasData != oldValue else {
+                return
+            }
+            if self.hasData {
+                self.tblStudents.tableFooterView = noDataView
+                self.tblStudents.isScrollEnabled = false
+            } else {
+                self.tblStudents.tableFooterView = footer
+                self.tblStudents.isScrollEnabled = true
+            }
+        }
+    }
     fileprivate var studentDataSource = DataSource()
     fileprivate var studentDelegate = Delegate()
     fileprivate var numberDataSource = NumberDataSource()
-    fileprivate var numberDelegate = NumberDelegate()
     
     /// IBOutlets
     @IBOutlet weak var tblStudents: UITableView!
-    @IBOutlet weak var lblNotification: UILabel! {
-        didSet {
-            lblNotification.isHidden = true
-        }
-    }
-    
     @IBOutlet weak var mySwitch: UISwitch!
+    @IBOutlet weak var noDataView: UIView!
+    @IBOutlet weak var footer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        self.mySwitch.isOn = isShowStudent
+        self.mySwitch.addTarget(self, action: #selector(changeData(_:)), for: .valueChanged)
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tblStudents.reloadData()
+        setupUI()
     }
     
     @IBAction func add(_ sender: Any) {
@@ -79,29 +103,21 @@ extension ListStudentsVC {
     }
     
     fileprivate func setupUI() {
-        self.mySwitch.isOn = isShowStudent
-        self.mySwitch.addTarget(self, action: #selector(changeData(_:)), for: .valueChanged)
+        if mySwitch.isOn {
+            hasData = dataServices?.students.count == 0
+        } else {
+            hasData = dataServices?.numbers.count == 0
+        }
     }
-    
     @objc fileprivate func changeData(_ sw: UISwitch) {
         self.isShowStudent = sw.isOn
-        
         if isShowStudent {
             tblStudents.dataSource = studentDataSource
             tblStudents.delegate = studentDelegate
         } else {
             tblStudents.dataSource = numberDataSource
-            tblStudents.delegate = numberDelegate
         }
+        setupUI()
         tblStudents.reloadData()
-    }
-    
-    
-}
-
-/// Call-back data to ListStudentsVC
-extension ListStudentsVC: DetailsStudentDelegate {
-    func appendStudent(student: Student?) {
-        return
     }
 }

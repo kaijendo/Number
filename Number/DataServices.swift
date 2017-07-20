@@ -13,8 +13,8 @@ class DataServices {
     /// Variables
     static let shared = DataServices()
     private var _students: [Student]!
-    private var _numbers: [Int]!
-    var numbers: [Int] {
+    private var _numbers: [Number]!
+    var numbers: [Number] {
         get {
             if _numbers == nil {
                 updateNumber()
@@ -64,14 +64,14 @@ class DataServices {
     }
     
     //MARK: - Function for Number
-    func appendNumber(number: Int?)  {
+    func appendNumber(number: Number?)  {
         guard number != nil else { return }
         if _numbers == nil {
             _numbers = []
         }
         _numbers.append(number!)
     }
-    func editNumber(number: Int, at index: Int) {
+    func editNumber(number: Number, at index: Int) {
         _numbers[index] = number
     }
     func removeNumber(at index: Int) {

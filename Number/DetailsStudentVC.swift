@@ -13,7 +13,7 @@ class DetailsStudentVC: UIViewController {
     /// Variables
     var dataServices = DataServices.shared
     var selected: Int?
-    weak var delegation: DetailsStudentDelegate?
+
     /// IBOutlets
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtClass: UITextField!
@@ -33,6 +33,7 @@ class DetailsStudentVC: UIViewController {
             appendStudent()
         } else {
             editStudent(at: selected ?? 0)
+            self.navigationController?.popViewController(animated: true)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -114,5 +115,12 @@ extension DetailsStudentVC {
             txtPhone.text = dataServices.students[index ?? 0].sPhone
             myImage.image = dataServices.students[index ?? 0].sImage
         }
+    }
+}
+
+extension DetailNumbersVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return self.view.endEditing(true)
     }
 }

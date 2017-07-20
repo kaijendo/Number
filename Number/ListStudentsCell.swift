@@ -16,6 +16,7 @@ class ListStudentsCell: UITableViewCell {
     @IBOutlet weak var sPhone: UILabel!
     @IBOutlet weak var sClass: UILabel!
     @IBOutlet weak var lblCount: UILabel!
+    @IBOutlet weak var lblCreate: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

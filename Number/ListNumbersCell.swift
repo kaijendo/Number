@@ -11,6 +11,7 @@ import UIKit
 class ListNumbersCell: UITableViewCell {
 
     @IBOutlet weak var lblNumber: UILabel!
+    @IBOutlet weak var lblCreated: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

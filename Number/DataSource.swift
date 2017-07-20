@@ -23,6 +23,13 @@ class DataSource: NSObject, UITableViewDataSource {
         cell.sPhone.text = dataService.students[indexPath.row].sPhone
         cell.sClass.text = dataService.students[indexPath.row].sClass
         cell.sImage.image = dataService.students[indexPath.row].sImage
+        cell.lblCreate.text = "Created at:" + dataService.students[indexPath.row].sDate
         return cell
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            dataService.removeStudent(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
 }

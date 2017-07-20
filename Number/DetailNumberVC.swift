@@ -22,12 +22,13 @@ class DetailNumbersVC: UIViewController {
             appendNumber()
         } else {
             editNumber(at: selected ?? 0)
+            self.navigationController?.popViewController(animated: true)
         }
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        showUI(at: selected)
         // Do any additional setup after loading the view.
     }
 
@@ -38,27 +39,25 @@ class DetailNumbersVC: UIViewController {
 }
 
 
+// MARK: - Private Function
 extension DetailNumbersVC {
     fileprivate func appendNumber() {
-        guard let sNumber = txtNumber.text else {
+        guard let sNumber = txtNumber.text , let number = Int(sNumber) else {
             return
         }
-        let newNumber = Int(sNumber)
-            dataServices.appendNumber(number: newNumber ?? 0)
-        
+        let newNumber = Number(sNumber: number)
+            dataServices.appendNumber(number: newNumber)
     }
-    
     fileprivate func editNumber(at index: Int) {
-        guard let sNumber = txtNumber.text else {
+        guard let sNumber = txtNumber.text, let number = Int(sNumber) else {
             return
         }
-        let newNumber = Int(sNumber)
-        dataServices.editNumber(number: newNumber ?? 0, at: index)
+        let newNumber = Number(sNumber: number, sDate: Date())
+        dataServices.editNumber(number: newNumber, at: index)
     }
     fileprivate func showUI(at index: Int?) {
         if index != nil {
-            txtNumber.text = "\(dataServices.numbers[index ?? 0])"
+            txtNumber.text = "\(dataServices.numbers[index ?? 0].sNumber ?? 0)"
         }
     }
-
 }
