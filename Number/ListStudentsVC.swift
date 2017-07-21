@@ -104,10 +104,11 @@ extension ListStudentsVC {
     
     fileprivate func setupUI() {
         if mySwitch.isOn {
-            hasData = dataServices?.students.count == 0
+            hasData = DataServices.shared.students.count == 0
         } else {
-            hasData = dataServices?.numbers.count == 0
+            hasData = DataServices.shared.numbers.count == 0
         }
+        tblStudents.reloadData()
     }
     @objc fileprivate func changeData(_ sw: UISwitch) {
         self.isShowStudent = sw.isOn
@@ -118,6 +119,5 @@ extension ListStudentsVC {
             tblStudents.dataSource = numberDataSource
         }
         setupUI()
-        tblStudents.reloadData()
     }
 }
